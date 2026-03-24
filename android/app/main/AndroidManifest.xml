@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- ════════════════════════════════════════════════ -->
     <!--  صلاحيات الإنترنت                               -->
@@ -19,7 +20,8 @@
 
     <!-- Android 12+ -->
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
-        android:usesPermissionFlags="neverForLocation" />
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
 
@@ -33,7 +35,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="29" />
+        android:maxSdkVersion="29"
+        tools:ignore="ScopedStorage" />
 
     <!-- Android 13+ -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
@@ -63,7 +66,9 @@
         android:allowBackup="true"
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
 
         <!-- ════════════════════════════════════════════ -->
         <!--  النشاط الرئيسي                             -->
@@ -89,6 +94,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="ghanemsoft" />
+            </intent-filter>
+
+            <!-- دعم استقبال الصور من تطبيقات أخرى -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="image/*" />
             </intent-filter>
 
         </activity>
@@ -119,5 +140,21 @@
             android:value="2" />
 
     </application>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!--  إعدادات إضافية للتطبيق                        -->
+    <!-- ════════════════════════════════════════════════ -->
+    <queries>
+        <!-- الاستعلام عن تطبيق ESC POS Printer -->
+        <package android:name="com.escpos.printer" />
+        <package android:name="com.escpos.thermalprinter" />
+        <package android:name="com.print.escpos" />
+        
+        <!-- الاستعلام عن تطبيقات الطابعات الأخرى -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
 
 </manifest>
