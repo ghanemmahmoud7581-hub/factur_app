@@ -1,1 +1,4 @@
 flet
+pillow
+arabic-reshaper
+python-bidi
