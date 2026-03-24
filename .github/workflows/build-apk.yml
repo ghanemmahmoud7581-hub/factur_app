@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: '3.24.5'  
+  FLUTTER_VERSION: '3.24.5'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # إصلاح تحذير Node.js
 
 jobs:
   build:
@@ -45,12 +46,17 @@ jobs:
       run: yes | flutter doctor --android-licenses || true
 
     - name: Build Android APK
-      run: |
-        echo "y" | flet build apk --project "ghanem-soft" -v
-      
+      run: echo "y" | flet build apk --project "ghanem-soft" -v
+
+    # نبحث عن ملف APK أينما كان بعد البناء
+    - name: Find APK file
+      run: find . -name "*.apk" 2>/dev/null || echo "No APK found"
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: ghanemsoft-invoice
-        path: build/apk/app-release.apk
+        path: |
+          build/apk/**/*.apk
+          **/*.apk
+        if-no-files-found: warn
