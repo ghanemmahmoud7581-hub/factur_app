@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: '3.27.4'
+  FLUTTER_VERSION: '3.24.5'  
 
 jobs:
   build:
@@ -32,6 +32,9 @@ jobs:
         flutter-version: ${{ env.FLUTTER_VERSION }}
         channel: 'stable'
 
+    - name: Verify Flutter version
+      run: flutter --version
+
     - name: Set up Java JDK
       uses: actions/setup-java@v4
       with:
@@ -42,7 +45,9 @@ jobs:
       run: yes | flutter doctor --android-licenses || true
 
     - name: Build Android APK
-      run: flet build apk --project "ghanem-soft" -v
+      run: |
+        echo "y" | flet build apk --project "ghanem-soft" -v
+      
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
