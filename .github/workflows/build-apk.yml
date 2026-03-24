@@ -48,19 +48,26 @@ jobs:
       run: |
         yes | flutter doctor --android-licenses || true
     
-    - name: Build APK with Flet
+    - name: Verify Flutter installation
       run: |
-        flet build apk \
+        flutter doctor
+        flutter --version
+    
+    - name: Build APK with Flet Pack
+      run: |
+        flet pack main.py \
           --name "غانم سوفت" \
           --package-name com.ghanemsoft.invoice \
           --product-name "نظام الفواتير" \
           --description "نظام فواتير مع دعم الطباعة الحرارية" \
           --author "غانم سوفت" \
           --version "1.0.0" \
-          --build-number ${{ env.BUILD_NUMBER }}
+          --add-package pillow \
+          --add-package arabic-reshaper \
+          --add-package python-bidi
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: ghanemsoft-invoice
-        path: build/apk/*.apk
+        path: dist/*.apk
