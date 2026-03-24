@@ -1,0 +1,17 @@
+C:\Users\Mahmoud\Desktop\factur_app\main.py:597: DeprecationWarning: app() is deprecated since version 0.80.0. Use run() instead.
+  ft.app(target=main)
+C:\Users\Mahmoud\Desktop\factur_app\main.py:436: DeprecationWarning: symmetric() is deprecated since version 0.80.0 and will be removed in version 0.83.0. Use Padding.symmetric() instead
+  padding=ft.padding.symmetric(horizontal=24, vertical=16),
+C:\Users\Mahmoud\Desktop\factur_app\main.py:461: DeprecationWarning: symmetric() is deprecated since version 0.80.0 and will be removed in version 0.83.0. Use Padding.symmetric() instead
+  padding=ft.padding.symmetric(horizontal=14, vertical=18),
+C:\Users\Mahmoud\Desktop\factur_app\main.py:504: DeprecationWarning: ElevatedButton is deprecated since version 0.80.0 and will be removed in version 1.0. Use Button instead.
+  ft.ElevatedButton(
+<string>:56: DeprecationWarning: ElevatedButton is deprecated since version 0.80.0 and will be removed in version 1.0. Use Button instead.
+C:\Users\Mahmoud\Desktop\factur_app\main.py:530: DeprecationWarning: all() is deprecated since version 0.80.0 and will be removed in version 0.83.0. Use Border.all() instead.
+  border=ft.border.all(1, "#E2E8F0"),
+C:\Users\Mahmoud\Desktop\factur_app\main.py:567: DeprecationWarning: ElevatedButton is deprecated since version 0.80.0 and will be removed in version 1.0. Use Button instead.
+  ft.ElevatedButton("طباعة 🖨️", icon=ft.Icons.PRINT, on_click=do_print,
+C:\Users\Mahmoud\Desktop\factur_app\main.py:578: DeprecationWarning: symmetric() is deprecated since version 0.80.0 and will be removed in version 0.83.0. Use Padding.symmetric() instead
+  padding=ft.padding.symmetric(horizontal=14, vertical=10),
+C:\Users\Mahmoud\Desktop\factur_app\main.py:592: DeprecationWarning: all() is deprecated since version 0.80.0 and will be removed in version 0.83.0. Use Padding.all() instead
+  ft.Container(content=content, padding=ft.padding.all(20), expand=True),

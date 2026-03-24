@@ -1,23 +1,21 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
-name = "invoice-app"
+name = "ghanemsoft_invoice"
 version = "1.0.0"
-description = "تطبيق فواتير ضريبية"
-requires-python = ">=3.11"
+description = "نظام فواتير مع دعم الطباعة الحرارية"
+authors = [{name = "غانم سوفت"}]
 dependencies = [
-    "flet==0.24.1",
-    "arabic-reshaper",
-    "python-bidi",
+    "flet>=0.21.0",
+    "pillow>=10.0.0",
+    "arabic-reshaper>=3.0.0",
+    "python-bidi>=0.4.2"
 ]
 
-[tool.hatch.build.targets.wheel]
-packages = ["."]
+[project.scripts]
+ghanemsoft = "main:main"
 
 [tool.flet]
-app_name = "غانم سوفت - فواتير"
+app_name = "غانم سوفت"
+app_description = "نظام الفواتير مع دعم الطباعة الحرارية"
+app_author = "غانم سوفت"
 app_version = "1.0.0"
-org = "com.ghanemsoft"
-bundle_id = "com.ghanemsoft.invoice"
+icon = "icon.png"
